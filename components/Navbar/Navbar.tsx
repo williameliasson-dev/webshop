@@ -14,11 +14,19 @@ const Navbar = (props: Props) => {
   };
 
   useEffect(() => {
-    if (scrollPosition === 0 && h1nav !== null) {
+    if (
+      scrollPosition === 0 &&
+      h1nav.current !== null &&
+      nav.current !== null
+    ) {
       h1nav.current.style.fontSize = "3rem";
       nav.current.style.margin = "25px 0px";
     }
-    if (scrollPosition !== 0 && h1nav !== null) {
+    if (
+      scrollPosition !== 0 &&
+      h1nav.current !== null &&
+      nav.current !== null
+    ) {
       h1nav.current.style.fontSize = "2rem";
       nav.current.style.margin = "10px 0px";
     }

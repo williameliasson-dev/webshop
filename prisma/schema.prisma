@@ -10,7 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// next-auth
+//webshop starts
+
+model Product {
+  id        String   @id @default(cuid())
+  title     String
+  desc      String
+  imgLink   String
+  price     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//webshop ends
+
+// next-auth starts
 
 model Account {
   id                String  @id @default(cuid())
