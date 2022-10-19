@@ -19,9 +19,10 @@ model Product {
   desc      String
   imgLink   String
   price     Int
-  keywords  String[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([title, createdAt])
 }
 
 //webshop ends

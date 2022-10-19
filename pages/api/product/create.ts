@@ -15,7 +15,7 @@ export default async function handler(
     let keywords = [];
 
     for (let i = 0; i < req.body.title.length; i++) {
-      keywords.push(`${req.body.title}`.slice(0, i + 1));
+      keywords.push(`${req.body.title}`.slice(i, i + 1));
     }
 
     const newProduct = await prisma.product.create({
