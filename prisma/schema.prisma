@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -18,6 +19,7 @@ model Product {
   desc      String
   imgLink   String
   price     Int
+  keywords  String[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

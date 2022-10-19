@@ -12,16 +12,24 @@ export default async function handler(
       return;
     }
     const prisma = new PrismaClient();
+    let keywords = [];
+
+    for (let i = 0; i < req.body.title.length; i++) {
+      keywords.push(`${req.body.title}`.slice(0, i + 1));
+    }
+
     const newProduct = await prisma.product.create({
       data: {
         title: req.body.title,
         desc: req.body.desc,
         imgLink: req.body.imgLink,
         price: req.body.price,
+        keywords,
       },
     });
     return res.status(200).json(newProduct);
   } catch (err) {
     console.log(err);
+    res.status(500);
   }
 }
