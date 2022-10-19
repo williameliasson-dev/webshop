@@ -16,7 +16,11 @@ export default async function handler(
       where: {
         title: {
           contains: req.body.query,
+          mode: "insensitive",
         },
+      },
+      orderBy: {
+        title: "asc",
       },
     });
     return res.status(200).json(result ? result : "404");
