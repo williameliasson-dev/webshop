@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+
+.search {
+  display: flex;
+}
+
+.results {
+  width: 100%;
+  top: 30px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  margin-right: auto;
+}
