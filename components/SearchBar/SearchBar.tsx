@@ -1,4 +1,5 @@
 import { Product } from "@prisma/client";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { useRouter } from "next/router";
@@ -42,6 +43,7 @@ const SearchBar = (props: Props) => {
           onSubmit={(e) => {
             e.preventDefault();
             router.push(`/search?products=${query}`);
+            setQuery("");
           }}
         >
           <label htmlFor="search-input" className={styles.search}>
@@ -65,18 +67,31 @@ const SearchBar = (props: Props) => {
               onChange={(e) => setQuery(e.target.value)}
               id="search-input"
               placeholder="Sök..."
+              autoComplete="off"
             />
           </label>
         </form>
-        <div className={styles.results}>
-          {results?.map((result: Product, i) => {
-            return (
-              <div className={styles.result} key={i}>
-                <h3>{result.title}</h3>
-              </div>
-            );
-          })}
-        </div>
+        {query !== "" && (
+          <div className={styles.results}>
+            <h2>Produkter</h2>
+            <div className={styles.products}>
+              {results?.map((result: Product, i) => {
+                return (
+                  <div className={styles.result} key={i}>
+                    <a className={styles.imagewrapper}>
+                      <Image
+                        layout="fill"
+                        alt="product"
+                        src={`${result.imgLink}`}
+                      />
+                    </a>
+                    <h3>{result.title}</h3>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

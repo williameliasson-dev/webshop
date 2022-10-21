@@ -12,7 +12,7 @@ export default async function handler(
     }
     const prisma = new PrismaClient();
     const result = await prisma.product.findMany({
-      take: 10,
+      take: 8,
       where: {
         title: {
           contains: req.body.query,
