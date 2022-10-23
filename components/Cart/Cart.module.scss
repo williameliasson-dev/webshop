@@ -1,0 +1,14 @@
+.cart {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  span {
+    font-size: 0.8rem;
+    color: white;
+    align-self: flex-start;
+    background-color: black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+  }
+}

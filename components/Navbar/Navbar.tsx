@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
 import SearchBar from "../SearchBar/SearchBar";
+import Cart from "../Cart/Cart";
 
 type Props = {};
 
@@ -55,6 +56,7 @@ const Navbar = (props: Props) => {
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
+          <Cart />
         </div>
       </div>
       <nav ref={nav}>

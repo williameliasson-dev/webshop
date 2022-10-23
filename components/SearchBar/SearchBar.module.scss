@@ -11,7 +11,24 @@
   flex-direction: column;
 }
 
-.search {
+.suggestions {
+  padding-right: 2rem;
+  padding-left: 1rem;
+  border-right: 1px solid lightgray;
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  .suggestion-items {
+    align-items: flex-start;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
 }
 
 .results-container {
@@ -26,6 +43,7 @@
 }
 
 .results {
+  padding-left: 1rem;
   width: 35rem;
   display: flex;
   flex-direction: column;

@@ -73,6 +73,14 @@ const SearchBar = (props: Props) => {
         </form>
         {query !== "" && (
           <div className={styles["results-container"]}>
+            <div className={styles.suggestions}>
+              <h2>Sökförslag</h2>
+              <div className={styles["suggestion-items"]}>
+                {results?.map((result: Product, i) => {
+                  return <h3 key={i}>{result.title}</h3>;
+                })}
+              </div>
+            </div>
             <div className={styles.results}>
               <h2>Produkter</h2>
               <div className={styles.products}>
