@@ -14,9 +14,9 @@
     width: 70vw;
     text-align: center;
     margin-top: 25px;
-    div {
+    .topbar-item {
       justify-self: flex-end;
-      flex: 0.3333333333;
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;

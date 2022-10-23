@@ -1,16 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PrismaClient, Product } from "@prisma/client";
+import { Product } from "@prisma/client";
+import client from "../utils/prismadb";
 import styles from "../styles/Nyheter.module.scss";
 import Button from "../components/Button/Button";
+import type { RootState } from "../store";
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct } from "../store/cartSlice";
 
 type Props = {
   products: Array<Product>;
 };
 
 const Nyheter = ({ products }: Props) => {
-  console.log(products);
+  const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+  console.log(cart);
   return (
     <div className={styles.container}>
       <div className={styles.products}>
@@ -29,7 +35,12 @@ const Nyheter = ({ products }: Props) => {
               <h2>{product.title}</h2>
               <p>{product.desc}</p>
               <p>{product.price}kr</p>
-              <Button variant="btn">Köp</Button>
+              <Button
+                variant="btn"
+                onClick={() => dispatch(addProduct(product))}
+              >
+                Köp
+              </Button>
             </div>
           );
         })}
@@ -41,7 +52,7 @@ const Nyheter = ({ products }: Props) => {
 export default Nyheter;
 
 export async function getStaticProps() {
-  const prisma = new PrismaClient();
+  const prisma = client;
   const products = await prisma.product.findMany({
     orderBy: [
       {

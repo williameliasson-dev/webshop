@@ -8,7 +8,7 @@ type Props = {};
 
 const SearchBar = (props: Props) => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Product[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -72,23 +72,26 @@ const SearchBar = (props: Props) => {
           </label>
         </form>
         {query !== "" && (
-          <div className={styles.results}>
-            <h2>Produkter</h2>
-            <div className={styles.products}>
-              {results?.map((result: Product, i) => {
-                return (
-                  <div className={styles.result} key={i}>
-                    <a className={styles.imagewrapper}>
-                      <Image
-                        layout="fill"
-                        alt="product"
-                        src={`${result.imgLink}`}
-                      />
-                    </a>
-                    <h3>{result.title}</h3>
-                  </div>
-                );
-              })}
+          <div className={styles["results-container"]}>
+            <div className={styles.results}>
+              <h2>Produkter</h2>
+              <div className={styles.products}>
+                {results?.map((result: Product, i) => {
+                  return (
+                    <div className={styles.result} key={i}>
+                      <a className={styles.imagewrapper}>
+                        <Image
+                          layout="fill"
+                          alt="product"
+                          src={`${result.imgLink}`}
+                        />
+                      </a>
+                      <h3>{result.title}</h3>
+                      <h4>{result.price} kr</h4>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}

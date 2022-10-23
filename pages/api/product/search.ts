@@ -1,4 +1,4 @@
-import { PrismaClient, Product } from "@prisma/client";
+import client from "../../../utils/prismadb";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -10,7 +10,7 @@ export default async function handler(
       res.status(405);
       return;
     }
-    const prisma = new PrismaClient();
+    const prisma = client;
     const result = await prisma.product.findMany({
       take: 8,
       where: {
@@ -23,9 +23,11 @@ export default async function handler(
         title: "asc",
       },
     });
+    await prisma.$disconnect();
     return res.status(200).json(result ? result : "404");
   } catch (err) {
     console.log(err);
+
     return res.status(500).json(err);
   }
 }

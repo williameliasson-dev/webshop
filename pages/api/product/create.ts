@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { PrismaClient, Product } from "@prisma/client";
+import { Product } from "@prisma/client";
+import client from "../../../utils/prismadb";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -11,12 +12,7 @@ export default async function handler(
       res.status(405);
       return;
     }
-    const prisma = new PrismaClient();
-    let keywords = [];
-
-    for (let i = 0; i < req.body.title.length; i++) {
-      keywords.push(`${req.body.title}`.slice(i, i + 1));
-    }
+    const prisma = client;
 
     const newProduct = await prisma.product.create({
       data: {
@@ -24,7 +20,6 @@ export default async function handler(
         desc: req.body.desc,
         imgLink: req.body.imgLink,
         price: req.body.price,
-        keywords,
       },
     });
     return res.status(200).json(newProduct);

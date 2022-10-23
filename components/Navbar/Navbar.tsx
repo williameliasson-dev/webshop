@@ -31,13 +31,15 @@ const Navbar = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.topbar}>
-        <SearchBar />
-        <div>
+        <div className={styles["topbar-item"]}>
+          <SearchBar />
+        </div>
+        <div className={styles["topbar-item"]}>
           <Link href="/">
             <h1 ref={h1nav}>WEBSHOP</h1>
           </Link>
         </div>
-        <div>
+        <div className={styles["topbar-item"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
