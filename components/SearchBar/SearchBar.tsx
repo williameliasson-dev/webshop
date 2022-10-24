@@ -3,19 +3,21 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { useRouter } from "next/router";
+import { Results, Suggestion } from "../../interface";
 
-type Props = {};
-
-const SearchBar = (props: Props) => {
+const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Product[]>([]);
+  const [results, setResults] = useState<Results>({
+    products: [],
+    suggestions: [],
+  });
   const router = useRouter();
 
   useEffect(() => {
     if (query.length !== 0) {
       fetchResult();
     } else {
-      setResults([]);
+      setResults({ products: [], suggestions: [] });
     }
   }, [query]);
 
@@ -76,7 +78,7 @@ const SearchBar = (props: Props) => {
             <div className={styles.suggestions}>
               <h2>Sökförslag</h2>
               <div className={styles["suggestion-items"]}>
-                {results?.map((result: Product, i) => {
+                {results?.suggestions?.map((result: Suggestion, i) => {
                   return <h3 key={i}>{result.title}</h3>;
                 })}
               </div>
@@ -84,7 +86,7 @@ const SearchBar = (props: Props) => {
             <div className={styles.results}>
               <h2>Produkter</h2>
               <div className={styles.products}>
-                {results?.map((result: Product, i) => {
+                {results?.products?.map((result: Product, i) => {
                   return (
                     <div className={styles.result} key={i}>
                       <a className={styles.imagewrapper}>

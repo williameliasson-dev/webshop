@@ -11,7 +11,7 @@ export default async function handler(
       return;
     }
     const prisma = client;
-    const result = await prisma.product.findMany({
+    const products = await prisma.product.findMany({
       take: 8,
       where: {
         title: {
@@ -23,6 +23,27 @@ export default async function handler(
         title: "asc",
       },
     });
+    const suggestions = await prisma.product.findMany({
+      take: 15,
+      where: {
+        title: {
+          contains: req.body.query,
+          mode: "insensitive",
+        },
+      },
+      select: {
+        id: true,
+        title: true,
+      },
+      orderBy: {
+        title: "asc",
+      },
+    });
+
+    const result = {
+      products,
+      suggestions,
+    };
     await prisma.$disconnect();
     return res.status(200).json(result ? result : "404");
   } catch (err) {

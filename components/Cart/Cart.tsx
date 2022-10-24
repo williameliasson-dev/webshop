@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Cart.module.scss";
-import { addProduct } from "../../store/cartSlice";
 
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
@@ -8,7 +7,7 @@ type Props = {};
 
 const Cart = (props: Props) => {
   const cart = useAppSelector((state) => state.cart.products);
-  const dispatch = useAppDispatch();
+
   return (
     <div className={styles.cart}>
       <svg
@@ -18,9 +17,9 @@ const Cart = (props: Props) => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className="feather feather-shopping-cart"
       >
         <circle cx="9" cy="21" r="1"></circle>
