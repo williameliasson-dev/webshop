@@ -10,6 +10,7 @@ const SearchBar = () => {
   const [results, setResults] = useState<Results>({
     products: [],
     suggestions: [],
+    categories: [],
   });
   const router = useRouter();
 
@@ -17,7 +18,7 @@ const SearchBar = () => {
     if (query.length !== 0) {
       fetchResult();
     } else {
-      setResults({ products: [], suggestions: [] });
+      setResults({ products: [], suggestions: [], categories: [] });
     }
   }, [query]);
 
@@ -35,7 +36,6 @@ const SearchBar = () => {
         setResults(data);
       }
     });
-    console.log(results);
   }
 
   return (
@@ -80,6 +80,12 @@ const SearchBar = () => {
               <div className={styles["suggestion-items"]}>
                 {results?.suggestions?.map((result: Suggestion, i) => {
                   return <h3 key={i}>{result.title}</h3>;
+                })}
+              </div>
+              <div className={styles.categories}>
+                <h2>Kategorier</h2>
+                {results?.categories?.map((result, i) => {
+                  return <h3 key={i}>{result.category}</h3>;
                 })}
               </div>
             </div>

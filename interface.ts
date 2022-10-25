@@ -5,7 +5,12 @@ export interface Suggestion {
   title: string;
 }
 
+export interface Category {
+  category: string;
+}
+
 export interface Results {
   products: Array<Product>;
   suggestions: Array<Suggestion>;
+  categories: Array<Category>;
 }

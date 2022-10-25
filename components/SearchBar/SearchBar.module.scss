@@ -12,11 +12,14 @@
 }
 
 .suggestions {
-  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 4rem;
   padding-left: 1rem;
   border-right: 1px solid lightgray;
   h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 1.2rem;
   }
   .suggestion-items {
@@ -28,6 +31,17 @@
       font-size: 1rem;
       font-weight: 400;
     }
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: gray;
   }
 }
 

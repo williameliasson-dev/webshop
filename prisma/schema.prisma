@@ -19,6 +19,7 @@ model Product {
   desc      String
   imgLink   String
   price     Int
+  category  String   @default("")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

@@ -12,7 +12,7 @@ export default async function handler(
     }
     const prisma = client;
     const products = await prisma.product.findMany({
-      take: 8,
+      take: 6,
       where: {
         title: {
           contains: req.body.query,
@@ -24,7 +24,7 @@ export default async function handler(
       },
     });
     const suggestions = await prisma.product.findMany({
-      take: 15,
+      take: 10,
       where: {
         title: {
           contains: req.body.query,
@@ -39,10 +39,26 @@ export default async function handler(
         title: "asc",
       },
     });
+    const categories = await prisma.product.findMany({
+      take: 10,
+      where: {
+        category: {
+          contains: req.body.query,
+          mode: "insensitive",
+        },
+      },
+      select: {
+        category: true,
+      },
+      orderBy: {
+        title: "asc",
+      },
+    });
 
     const result = {
       products,
       suggestions,
+      categories,
     };
     await prisma.$disconnect();
     return res.status(200).json(result ? result : "404");

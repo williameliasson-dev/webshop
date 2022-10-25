@@ -6,7 +6,7 @@ import client from "../utils/prismadb";
 import styles from "../styles/Nyheter.module.scss";
 import Button from "../components/Button/Button";
 import type { RootState } from "../store";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../store/cartSlice";
 
 type Props = {
@@ -14,9 +14,7 @@ type Props = {
 };
 
 const Nyheter = ({ products }: Props) => {
-  const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-  console.log(cart);
   return (
     <div className={styles.container}>
       <div className={styles.products}>
