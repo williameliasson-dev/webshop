@@ -5,7 +5,6 @@ import { Product } from "@prisma/client";
 import client from "../utils/prismadb";
 import styles from "../styles/Nyheter.module.scss";
 import Button from "../components/Button/Button";
-import type { RootState } from "../store";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../store/cartSlice";
 

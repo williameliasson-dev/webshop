@@ -26,6 +26,13 @@ model Product {
   @@index([title, createdAt])
 }
 
+model Admin {
+  id    String @id @default(cuid())
+  email String @unique
+
+  @@index([email])
+}
+
 //webshop ends
 
 // next-auth starts
@@ -57,6 +64,11 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -65,6 +77,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  role          Role      @default(USER)
 }
 
 model VerificationToken {

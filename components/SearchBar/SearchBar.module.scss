@@ -66,7 +66,7 @@
     font-size: 1.2rem;
   }
   .products {
-    display: grid !important;
+    display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -77,6 +77,7 @@
 
 .result {
   display: flex;
+  align-items: center;
   flex-direction: column;
   .imagewrapper {
     margin: 10px 20px;

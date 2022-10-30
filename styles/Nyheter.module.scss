@@ -11,9 +11,13 @@
   width: 80vw;
   margin: auto;
   display: grid;
-  justify-items: center;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
   .product {
     border-radius: 5px;
     position: relative;

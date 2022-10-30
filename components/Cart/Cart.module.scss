@@ -1,3 +1,40 @@
+.drawer {
+  position: absolute;
+  background-color: var(--background);
+  border-left: 1px solid gray;
+  top: 0;
+  right: 0;
+
+  width: 20vw;
+  height: 100vh;
+  animation: slideIn 0.5s ease-in;
+  display: flex;
+  flex-direction: column;
+  .product {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    margin: 0 5vh;
+  }
+  button {
+    margin: 20px 10vh;
+  }
+  h3 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
 .cart {
   display: flex;
   align-items: center;
@@ -11,4 +48,11 @@
     width: 15px;
     height: 15px;
   }
+}
+
+.cart-btn {
+  background-color: transparent;
+  border: none;
+  color: none;
+  cursor: pointer;
 }
