@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./Cart.module.scss";
-
 import { useAppSelector } from "../../store/hooks";
 import Button from "../Button/Button";
-import { Product } from "@prisma/client";
 
 type Props = {};
 
 const Cart = (props: Props) => {
   const cart = useAppSelector((state) => state.cart.products);
   const [drawer, setDrawer] = useState(false);
-
-  useEffect(() => {
-    cart.forEach((product) => {
-      console.log(cart.indexOf(product));
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart]);
 
   return (
     <div>
@@ -40,10 +31,7 @@ const Cart = (props: Props) => {
           <Button>Checkout</Button>
         </div>
       )}
-      <button
-        className={styles["cart-btn"]}
-        onClick={() => console.log(duplicateElements)}
-      >
+      <button className={styles["cart-btn"]} onClick={() => setDrawer(!drawer)}>
         <div className={styles.cart}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
