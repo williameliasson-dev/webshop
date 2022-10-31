@@ -7,15 +7,15 @@ import Button from "../Button/Button";
 type Props = {};
 
 const Cart = (props: Props) => {
-  const cart = useAppSelector((state) => state.cart.products);
+  const cart = useAppSelector((state) => state.cart);
   const [drawer, setDrawer] = useState(false);
 
   return (
     <div>
       {drawer && (
         <div className={styles.drawer}>
-          {cart.length === 0 && <h3>Din varukorg är tom...</h3>}
-          {cart.map((p, i) => {
+          {cart.products.length === 0 && <h3>Din varukorg är tom...</h3>}
+          {cart.products.map((p, i) => {
             return (
               <div className={styles.product} key={i}>
                 <Image
@@ -49,7 +49,7 @@ const Cart = (props: Props) => {
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
-          {cart.length > 0 && <span>{cart.length}</span>}
+          {cart.products.length > 0 && <span>{cart.amount}</span>}
         </div>
       </button>
     </div>
