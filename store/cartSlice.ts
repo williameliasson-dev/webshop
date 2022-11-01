@@ -18,30 +18,19 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action: PayloadAction<Product>) => {
       let cur = current(state);
-      let amount = 0;
-      try {
-        if (
-          !(state.products.filter((e) => e.id === action.payload.id).length > 0)
-        ) {
-          state.products = [
-            ...state.products,
-            { ...action.payload, amount: 1 },
-          ];
-        }
-        if (
-          state.products.filter((e) => e.id === action.payload.id).length > 0
-        ) {
-          const index = cur.products
-            .map(function (el) {
-              return el.id;
-            })
-            .indexOf(action.payload.id);
-          state.products[index].amount = ++state.products[index].amount;
-          console.log(cur.products);
-        }
-      } catch {}
+      const product = cur.products.find((p) => action.payload.id === p.id);
+      if (!product) {
+        state.products = [...cur.products, { ...action.payload, amount: 1 }];
+      } else {
+        const index = cur.products
+          .map(function (el) {
+            return el.id;
+          })
+          .indexOf(action.payload.id);
+        state.products[index].amount = ++state.products[index].amount;
+      }
 
-      state.products.forEach((p) => (amount = amount + p.amount));
+      let amount = state.products.reduce((prev, cur) => prev + cur.amount, 0);
       state.amount = amount;
     },
     sliceProduct: (state, action: PayloadAction<number>) => {

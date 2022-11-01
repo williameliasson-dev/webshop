@@ -3,7 +3,7 @@ import styles from "./Button.module.scss";
 
 type Props = {
   variant?: string;
-  children: string | ReactElement;
+  children: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({ variant, children, ...props }: Props) => {
