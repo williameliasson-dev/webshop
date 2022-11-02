@@ -59,7 +59,7 @@ export default async function handler(
           "https://www.example.com/checkout.html?order_id={checkout.order.id}",
         confirmation:
           process.env.REDIRECT_URL +
-          "/confirmation?order_id={checkout.order.id}",
+          "/api/klarna/confirmation?order_id={checkout.order.id}",
         push: "https://www.example.com/api/push?order_id={checkout.order.id}",
       },
     };

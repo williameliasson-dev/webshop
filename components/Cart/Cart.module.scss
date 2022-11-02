@@ -4,15 +4,18 @@
   border-left: 1px solid gray;
   top: 0;
   right: 0;
-  width: 20vw;
+
+  width: 23vw;
   height: 100vh;
   animation: slideIn 0.5s ease-in;
   display: flex;
+
   flex-direction: column;
   .product {
     display: flex;
+    align-items: center;
     border-bottom: 1px solid lightgray;
-    margin: 0 5vh;
+    margin: 1vh 3vw;
   }
   button {
     margin: 20px 10vh;
@@ -39,10 +42,10 @@
   align-items: center;
   height: 2.5rem;
   span {
+    font-size: 0.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
     color: white;
     align-self: flex-start;
     background-color: black;
