@@ -19,20 +19,6 @@ const Navbar = (props: Props) => {
     setScrollPosition(position);
   };
 
-  useEffect(() => {
-    if (h1nav.current === null || nav.current === null) return;
-    h1nav.current.style.fontSize = scrollPosition === 0 ? "3rem" : "2rem";
-    nav.current.style.margin = scrollPosition === 0 ? "25px 0px" : "10px 0px";
-  }, [scrollPosition]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.topbar}>
