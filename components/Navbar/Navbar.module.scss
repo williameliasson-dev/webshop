@@ -1,9 +1,32 @@
 .container {
-  position: absolute;
-  background-color: white;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  inset: 15px;
+  bottom: auto;
   width: 400px;
-  margin: 15px;
-  height: 60px;
   z-index: 120;
-  border: 1px solid black;
+  display: flex;
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid black;
+  }
+  h3 {
+    font-weight: 300;
+    margin: 0.5rem;
+  }
+  .actions {
+    display: flex;
+    margin: 0.5rem;
+    button {
+      background-color: transparent;
+      border: none;
+      margin: 0.2rem;
+    }
+  }
 }

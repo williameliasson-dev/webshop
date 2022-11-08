@@ -12,3 +12,14 @@
   font-size: 14px;
   font-weight: 200;
 }
+
+.invis {
+  @extend .btn;
+  --bg-color: transparent;
+  --color: black;
+  --bordercolor: none;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+}
