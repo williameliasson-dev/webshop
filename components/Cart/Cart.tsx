@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Cart.module.scss";
 import { useAppSelector } from "../../store/hooks";
 import Button from "../Button/Button";
@@ -29,7 +30,11 @@ const Cart = (props: Props) => {
               </div>
             );
           })}
-          <Button>Checkout</Button>
+          <Link href="/checkout">
+            <a>
+              <Button>Checkout</Button>
+            </a>
+          </Link>
         </div>
       )}
       <button className={styles["cart-btn"]} onClick={() => setDrawer(!drawer)}>

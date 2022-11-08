@@ -19,40 +19,54 @@ export default async function handler(
       "Basic " + Buffer.from(client + ":" + secret).toString("base64");
     return auth;
   }
-  async function createOrder() {
+  async function createOrder(products: Array<Product>) {
+    const prisma = client;
+    const idList = products.map((p) => p.id);
+    const dbProducts = await prisma.product.findMany({
+      where: {
+        id: { in: idList },
+      },
+    });
     const auth = getKlarnaAuth();
     const url = "https://api.playground.klarna.com/checkout/v3/orders";
-    const product = {
-      id: "10",
-      name: "test",
-      price: 20,
-    };
-    const quantity = 1;
-    const price = product.price * 100;
-    const total_amount = price * quantity;
-    const total_tax_amount = total_amount * 0.2;
+    const orderInfo = products.map((p, i) => {
+      const name = dbProducts.find((p) => p.id === idList[i])?.title;
+      const price = dbProducts.find((p) => p.id === idList[i])?.price;
+      let amount = products.find((p) => p.id === idList[i])?.amount;
+      if (price && amount) {
+        return {
+          type: "physical",
+          reference: p.id,
+          name,
+          quantity: amount,
+          quantity_unit: "pcs",
+          unit_price: price * 100,
+          tax_rate: 2500,
+          total_amount: price * 100 * amount,
+          total_discount_amount: 0,
+          total_tax_amount: Math.floor(price * 100 * amount * 0.2),
+        };
+      }
+    });
+    const order_amount = products
+      .map((_, i) => {
+        let amount = products.find((p) => p.id === idList[i])?.amount;
+        let price = dbProducts.find((p) => p.id === idList[i])?.price;
+        if (price && amount) {
+          return price * 100 * amount;
+        } else return 0;
+      })
+      .reduce((prev, cur) => prev + cur);
+    const order_tax_amount = Math.floor(order_amount * 0.2);
 
     // nts: order-lines är min kundvagn så kan göra en map där (:
     const payload = {
       purchase_country: "SE",
       purchase_currency: "SEK",
       locale: "sv-SE",
-      order_amount: total_amount,
-      order_tax_amount: total_tax_amount,
-      order_lines: [
-        {
-          type: "physical",
-          reference: product.id,
-          name: product.name,
-          quantity,
-          quantity_unit: "pcs",
-          unit_price: price,
-          tax_rate: 2500,
-          total_amount: total_amount,
-          total_discount_amount: 0,
-          total_tax_amount,
-        },
-      ],
+      order_amount: order_amount,
+      order_tax_amount: order_tax_amount,
+      order_lines: [...orderInfo],
       merchant_urls: {
         terms: "https://www.example.com/terms.html",
         checkout:
@@ -63,6 +77,7 @@ export default async function handler(
         push: "https://www.example.com/api/push?order_id={checkout.order.id}",
       },
     };
+    console.log(payload);
     return await axios.post(url, payload, {
       headers: {
         "Content-Type": "application/json",
@@ -71,8 +86,8 @@ export default async function handler(
     });
   }
   try {
-    if (req.method !== "POST") {
-      res.send((await createOrder()).data.html_snippet);
+    if (req.method === "POST") {
+      res.send((await createOrder(req.body.products)).data.html_snippet);
     }
   } catch {}
 }
