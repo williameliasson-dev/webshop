@@ -1,49 +1,9 @@
 .container {
-  position: sticky;
-  background-color: var(--secondary);
-  z-index: 100;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  height: 100px;
-  border-bottom: 1px solid gray;
-  .topbar {
-    display: flex;
-    flex-direction: row;
-    width: 70vw;
-    margin-top: 15px;
-    .topbar-item {
-      justify-self: flex-end;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-      }
-    }
-    input {
-      background-color: rgba(255, 255, 255, 0);
-      border: none;
-      border-bottom: 1px solid gray;
-      outline: none;
-    }
-    h1 {
-      transition: 0.5s ease-in-out;
-      margin: 0;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-  }
-  nav {
-    display: flex;
-    gap: 6rem;
-    margin: 10px 0px;
-    transition: 0.5s ease-in-out;
-  }
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  margin: 15px;
+  height: 60px;
+  z-index: 120;
+  border: 1px solid black;
 }

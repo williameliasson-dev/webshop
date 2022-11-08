@@ -29,9 +29,14 @@ export default async function handler(
     });
     const auth = getKlarnaAuth();
     const url = "https://api.playground.klarna.com/checkout/v3/orders";
+    const productsObj: Record<string, { name: string; price: number }> = {};
+    for (const product of dbProducts) {
+      productsObj[product.id] = { name: product.title, price: product.price };
+    }
     const orderInfo = products.map((p, i) => {
-      const name = dbProducts.find((p) => p.id === idList[i])?.title;
-      const price = dbProducts.find((p) => p.id === idList[i])?.price;
+      const curProduct = productsObj[p.id];
+      const name = curProduct.name;
+      const price = curProduct.price;
       let amount = products.find((p) => p.id === idList[i])?.amount;
       if (price && amount) {
         return {

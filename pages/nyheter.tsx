@@ -30,7 +30,6 @@ const Nyheter = ({ products }: Props) => {
                 </a>
               </Link>
               <h2>{product.title}</h2>
-              <p>{product.desc}</p>
               <p>{product.price}kr</p>
               <Button
                 variant="btn"
