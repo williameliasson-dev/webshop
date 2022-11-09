@@ -9,6 +9,8 @@
   z-index: 100;
   display: flex;
   .navbar {
+    height: 60px;
+
     z-index: 120;
     display: flex;
     align-items: center;
@@ -22,6 +24,11 @@
     .actions {
       display: flex;
       margin: 0.5rem;
+      .cartaction {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+      }
       button {
         background-color: transparent;
         border: none;
@@ -30,17 +37,15 @@
     }
   }
   .dropdown {
+    animation: slideDown 0.5s ease-in;
+    overflow: hidden;
     .searchbar {
       background-color: white;
-      animation: slideDown 0.5s ease-in;
-      overflow: hidden;
       border: 1px solid black;
       border-bottom-color: gray;
       border-top: none;
     }
     .links {
-      animation: slideDown 0.5s ease-in;
-      overflow: hidden;
       border: 1px solid black;
       border-top: none;
       background-color: white;
@@ -57,11 +62,44 @@
   }
 }
 
+.cart {
+  animation: slideDown 0.5s ease-in;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: white;
+  border: 1px solid black;
+  border-top: none;
+  button {
+    margin: 20px 40px;
+  }
+  .product-row {
+    display: flex;
+    width: 90%;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    gap: 5px;
+    span:last-child {
+      margin-left: auto;
+      margin-right: 2rem;
+    }
+  }
+  .product {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+  }
+}
+
 @keyframes slideDown {
   from {
     max-height: 0px;
   }
   to {
-    max-height: 100px;
+    max-height: 300px;
   }
 }
