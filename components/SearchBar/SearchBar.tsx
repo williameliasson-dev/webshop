@@ -3,22 +3,19 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { useRouter } from "next/router";
-import { Results, Suggestion } from "../../interface";
 
-const SearchBar = () => {
+const SearchBar = ({ setSearching }: any) => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Results>({
-    products: [],
-    suggestions: [],
-    categories: [],
-  });
+  const [results, setResults] = useState<Array<Product>>([]);
   const router = useRouter();
 
   useEffect(() => {
     if (query.length !== 0) {
+      setSearching(true);
       fetchResult();
     } else {
-      setResults({ products: [], suggestions: [], categories: [] });
+      setSearching(false);
+      setResults([]);
     }
   }, [query]);
 
@@ -40,7 +37,7 @@ const SearchBar = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.inner}>
+      <div>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -48,66 +45,25 @@ const SearchBar = () => {
             setQuery("");
           }}
         >
-          <label htmlFor="search-input" className={styles.search}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-search"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              id="search-input"
-              placeholder="Sök..."
-              autoComplete="off"
-            />
-          </label>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            id="search-input"
+            placeholder="SEARCH PRODUCTS"
+            autoComplete="off"
+          />
         </form>
         {query !== "" && (
-          <div className={styles["results-container"]}>
-            <div className={styles.suggestions}>
-              <h2>Sökförslag</h2>
-              <div className={styles["suggestion-items"]}>
-                {results?.suggestions?.map((result: Suggestion, i) => {
-                  return <h3 key={i}>{result.title}</h3>;
-                })}
-              </div>
-              <div className={styles.categories}>
-                <h2>Kategorier</h2>
-                {results?.categories?.map((result, i) => {
-                  return <h3 key={i}>{result.category}</h3>;
-                })}
-              </div>
-            </div>
-            <div className={styles.results}>
-              <h2>Produkter</h2>
-              <div className={styles.products}>
-                {results?.products?.map((result: Product, i) => {
-                  return (
-                    <div className={styles.result} key={i}>
-                      <a className={styles.imagewrapper}>
-                        <Image
-                          layout="fill"
-                          alt="product"
-                          src={`${result.imgLink}`}
-                        />
-                      </a>
-                      <h3>{result.title}</h3>
-                      <h4>{result.price} kr</h4>
-                    </div>
-                  );
-                })}
-              </div>
+          <div className={styles.results}>
+            <h2>Suggestions</h2>
+            <div>
+              {results?.map((result: Product, i) => {
+                return (
+                  <div key={i}>
+                    <h3>{result.title}</h3>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

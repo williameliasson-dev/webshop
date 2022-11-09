@@ -12,7 +12,7 @@ type Props = {
   products: Array<Product>;
 };
 
-const Nyheter = ({ products }: Props) => {
+const News = ({ products }: Props) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.container}>
@@ -45,7 +45,7 @@ const Nyheter = ({ products }: Props) => {
   );
 };
 
-export default Nyheter;
+export default News;
 
 export async function getStaticProps() {
   const prisma = client;

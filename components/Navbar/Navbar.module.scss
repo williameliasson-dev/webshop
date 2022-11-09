@@ -6,27 +6,62 @@
   inset: 15px;
   bottom: auto;
   width: 400px;
-  z-index: 120;
+  z-index: 100;
   display: flex;
-
   .navbar {
+    z-index: 120;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: white;
     border: 1px solid black;
-  }
-  h3 {
-    font-weight: 300;
-    margin: 0.5rem;
-  }
-  .actions {
-    display: flex;
-    margin: 0.5rem;
-    button {
-      background-color: transparent;
-      border: none;
-      margin: 0.2rem;
+    h3 {
+      font-weight: 300;
+      margin: 0.5rem;
     }
+    .actions {
+      display: flex;
+      margin: 0.5rem;
+      button {
+        background-color: transparent;
+        border: none;
+        margin: 0.2rem;
+      }
+    }
+  }
+  .dropdown {
+    .searchbar {
+      background-color: white;
+      animation: slideDown 0.5s ease-in;
+      overflow: hidden;
+      border: 1px solid black;
+      border-bottom-color: gray;
+      border-top: none;
+    }
+    .links {
+      animation: slideDown 0.5s ease-in;
+      overflow: hidden;
+      border: 1px solid black;
+      border-top: none;
+      background-color: white;
+      nav {
+        display: flex;
+        flex-direction: column;
+        margin: 0 15px;
+        a {
+          margin: 5px 0;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 100px;
   }
 }

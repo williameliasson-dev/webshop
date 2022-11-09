@@ -23,45 +23,11 @@ export default async function handler(
         title: "asc",
       },
     });
-    const suggestions = await prisma.product.findMany({
-      take: 10,
-      where: {
-        title: {
-          contains: req.body.query,
-          mode: "insensitive",
-        },
-      },
-      select: {
-        id: true,
-        title: true,
-      },
-      orderBy: {
-        title: "asc",
-      },
-    });
-    const categories = await prisma.product.findMany({
-      take: 10,
-      where: {
-        category: {
-          contains: req.body.query,
-          mode: "insensitive",
-        },
-      },
-      select: {
-        category: true,
-      },
-      orderBy: {
-        title: "asc",
-      },
-    });
-
-    const result = {
-      products,
-      suggestions,
-      categories,
-    };
+    const result = products;
     await prisma.$disconnect();
-    return res.status(200).json(result ? result : "404");
+    return res
+      .status(200)
+      .json(result.length > 0 ? result : [{ title: "No match.." }]);
   } catch (err) {
     console.log(err);
 

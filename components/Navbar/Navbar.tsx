@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
 import Cart from "../Cart/Cart";
@@ -12,12 +11,25 @@ type Props = {};
 const Navbar = (props: Props) => {
   const { data: session }: any = useSession();
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const navref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (toggleMenu && navref.current) {
+      navref.current.style.borderBottomColor = "gray";
+    } else {
+      navref.current
+        ? (navref.current.style.borderBottomColor = "black")
+        : null;
+    }
+  }, [toggleMenu]);
 
   return (
     <div className={styles.container}>
       <div>
-        <div className={styles.navbar}>
-          <h3>WEBSHOP</h3>
+        <div className={styles.navbar} ref={navref}>
+          <Link href={"/"}>
+            <h3 onClick={() => setToggleMenu(false)}>WEBSHOP</h3>
+          </Link>
           <div className={styles.actions}>
             {" "}
             <Cart />
@@ -43,7 +55,28 @@ const Navbar = (props: Props) => {
           </div>
         </div>
       </div>
-      {toggleMenu && <div>aaa</div>}
+      {toggleMenu && (
+        <div className={styles.dropdown}>
+          <div className={styles.searchbar}>
+            <SearchBar setSearching={setSearching} />
+          </div>
+          {searching === false && (
+            <div className={styles.links}>
+              <nav>
+                <Link href={"/news"}>
+                  <a onClick={() => setToggleMenu(false)}>NEW ARRIVALS</a>
+                </Link>
+                <Link href={"/"}>
+                  <a onClick={() => setToggleMenu(false)}>DENIM</a>
+                </Link>
+                <Link href={"/"}>
+                  <a onClick={() => setToggleMenu(false)}>FOOTWEAR</a>
+                </Link>
+              </nav>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
