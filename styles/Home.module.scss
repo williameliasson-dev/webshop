@@ -1,3 +1,9 @@
 .container {
-  padding: 200%;
+}
+
+.cover {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("../public/home-bg.webp") no-repeat fixed center;
 }
