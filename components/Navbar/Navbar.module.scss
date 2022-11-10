@@ -91,6 +91,10 @@
     align-items: center;
     flex-direction: column;
     border-bottom: 1px solid gray;
+    button {
+      margin: 0;
+      color: gray;
+    }
   }
 }
 

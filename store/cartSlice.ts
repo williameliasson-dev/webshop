@@ -33,10 +33,15 @@ export const cartSlice = createSlice({
       let amount = state.products.reduce((prev, cur) => prev + cur.amount, 0);
       state.amount = amount;
     },
-    sliceProduct: (state, action: PayloadAction<number>) => {
-      state.products = [
-        ...state.products.slice(action.payload, action.payload + 1),
-      ];
+    sliceProduct: (state, action: PayloadAction<string>) => {
+      let cur = current(state);
+      const i = cur.products.findIndex((p) => p.id === action.payload);
+      if (cur.products[i].amount > 1) {
+        state.products[i].amount = cur.products[i].amount - 1;
+        state.amount = state.amount - 1;
+      } else {
+        state.products.slice(i, 1);
+      }
     },
   },
 });

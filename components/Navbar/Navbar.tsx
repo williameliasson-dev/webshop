@@ -6,6 +6,8 @@ import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useAppSelector } from "../../store/hooks";
+import { useDispatch } from "react-redux";
+import { sliceProduct } from "../../store/cartSlice";
 
 type Props = {};
 
@@ -16,6 +18,7 @@ const Navbar = (props: Props) => {
   const [toggleCart, setToggleCart] = useState(false);
   const [searching, setSearching] = useState(false);
   const navref = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (toggleMenu && navref.current) {
       navref.current.style.borderBottomColor = "gray";
@@ -173,6 +176,12 @@ const Navbar = (props: Props) => {
                     <span>
                       <p>Price: {p.price}kr</p>
                       {p.amount > 1 && <p>Total: {p.price * p.amount}kr</p>}
+                      <Button
+                        variant="invis"
+                        onClick={() => dispatch(sliceProduct(p.id))}
+                      >
+                        Remove
+                      </Button>
                     </span>
                   </div>
                 </div>
