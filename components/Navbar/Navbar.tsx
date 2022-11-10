@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
-import Cart from "../Cart/Cart";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useAppSelector } from "../../store/hooks";
 
@@ -43,27 +42,53 @@ const Navbar = (props: Props) => {
             <h3 onClick={() => setToggleMenu(false)}>WEBSHOP</h3>
           </Link>
           <div className={styles.actions}>
-            <Button variant="invis" onClick={() => setToggleCart(!toggleCart)}>
-              <div className={styles.cartaction}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="black"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="feather feather-shopping-cart"
-                >
-                  <circle cx="9" cy="21" r="1"></circle>
-                  <circle cx="20" cy="21" r="1"></circle>
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                {cart.products.length > 0 && <span>{cart.amount}</span>}
-              </div>
-            </Button>
+            {cart.products.length > 0 && (
+              <Button
+                variant="invis"
+                onClick={() => setToggleCart(!toggleCart)}
+              >
+                <div className={styles.cartaction}>
+                  {!toggleCart && (
+                    <span className={styles.cartaction}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="black"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-shopping-cart"
+                      >
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                      </svg>
+                      {cart.products.length > 0 && <span>{cart.amount}</span>}
+                    </span>
+                  )}
+                  {toggleCart && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="feather feather-x"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  )}
+                </div>
+              </Button>
+            )}
             <Button variant="invis" onClick={() => setToggleMenu(!toggleMenu)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
