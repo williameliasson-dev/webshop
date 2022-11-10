@@ -49,11 +49,11 @@ const Navbar = (props: Props) => {
               >
                 <div className={styles.cartaction}>
                   {!toggleCart && (
-                    <span className={styles.cartaction}>
+                    <div className={styles.cartaction}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        width="24"
+                        height="24"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="black"
@@ -67,13 +67,13 @@ const Navbar = (props: Props) => {
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                       </svg>
                       {cart.products.length > 0 && <span>{cart.amount}</span>}
-                    </span>
+                    </div>
                   )}
                   {toggleCart && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="24"
+                      height="24"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -90,23 +90,42 @@ const Navbar = (props: Props) => {
               </Button>
             )}
             <Button variant="invis" onClick={() => setToggleMenu(!toggleMenu)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-align-justify"
-              >
-                <line x1="21" y1="10" x2="3" y2="10" />
-                <line x1="21" y1="6" x2="3" y2="6" />
-                <line x1="21" y1="14" x2="3" y2="14" />
-                <line x1="21" y1="18" x2="3" y2="18" />
-              </svg>
+              {!toggleMenu && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-align-justify"
+                >
+                  <line x1="21" y1="10" x2="3" y2="10" />
+                  <line x1="21" y1="6" x2="3" y2="6" />
+                  <line x1="21" y1="14" x2="3" y2="14" />
+                  <line x1="21" y1="18" x2="3" y2="18" />
+                </svg>
+              )}
+              {toggleMenu && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="feather feather-x"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              )}
             </Button>
           </div>
         </div>
@@ -161,7 +180,7 @@ const Navbar = (props: Props) => {
             })}
           </div>
           <Link href={"/checkout"}>
-            <Button>Checkout</Button>
+            <Button onClick={() => setToggleCart(false)}>Checkout</Button>
           </Link>
         </div>
       )}
