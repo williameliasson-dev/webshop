@@ -1,6 +1,7 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../interface";
+import { stat } from "fs";
 
 export interface cartState {
   products: Array<Product>;
@@ -18,6 +19,7 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action: PayloadAction<Product>) => {
       let cur = current(state);
+      console.log(cur.products);
       const product = cur.products.find((p) => action.payload.id === p.id);
       if (!product) {
         state.products = [...cur.products, { ...action.payload, amount: 1 }];
@@ -40,7 +42,12 @@ export const cartSlice = createSlice({
         state.products[i].amount = cur.products[i].amount - 1;
         state.amount = state.amount - 1;
       } else {
-        state.products.slice(i, 1);
+        console.log(cur.products);
+        console.log(i);
+        state.products = [
+          ...state.products.slice(0, i),
+          ...state.products.slice(i + 1),
+        ];
       }
     },
   },
