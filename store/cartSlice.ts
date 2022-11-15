@@ -42,12 +42,11 @@ export const cartSlice = createSlice({
         state.products[i].amount = cur.products[i].amount - 1;
         state.amount = state.amount - 1;
       } else {
-        console.log(cur.products);
-        console.log(i);
         state.products = [
           ...state.products.slice(0, i),
           ...state.products.slice(i + 1),
         ];
+        state.amount = state.amount - 1;
       }
     },
   },
