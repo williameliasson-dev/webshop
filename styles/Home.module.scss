@@ -1,8 +1,37 @@
-.container {
-}
-
 .cover {
+  position: fixed;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   background: url("../public/home-bg.webp") no-repeat fixed center;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .hero {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 200px;
+    button {
+      margin: 2rem;
+      padding: 20px 35px;
+    }
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-weight: 400;
+      font-size: 1.4rem;
+    }
+  }
 }
