@@ -21,9 +21,11 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 200px;
+    margin-bottom: 20px;
     button {
-      margin: 2rem;
+      background-color: white;
+      color: black;
+      margin: 1rem 3rem;
       padding: 20px 35px;
     }
     h1 {
@@ -32,6 +34,26 @@
     p {
       font-weight: 400;
       font-size: 1.4rem;
+    }
+  }
+}
+
+.displays {
+  display: flex;
+  gap: 40px;
+  .display {
+    background-color: white;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    img {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+      pointer-events: none;
     }
   }
 }

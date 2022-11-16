@@ -29,6 +29,38 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
+        <div className={styles.displays}>
+          <div className={styles.display}>
+            <Image
+              width="200px"
+              height="200px"
+              alt="display-pants"
+              src="/hero-pants.jpg"
+            />
+            <Button>BOTTOMS</Button>
+          </div>
+          <div
+            onMouseOver={() => console.log("MOUSE OVER")}
+            className={styles.display}
+          >
+            <Image
+              width="200px"
+              height="200px"
+              alt="display-pants"
+              src="/hero-top.jpg"
+            />
+            <Button>TOPS</Button>
+          </div>
+          <div className={styles.display}>
+            <Image
+              width="200px"
+              height="200px"
+              alt="display-pants"
+              src="/hero-acc.jpg"
+            />
+            <Button>EYEWEAR</Button>
+          </div>
+        </div>
       </div>
       <div className={styles.cover}></div>
     </div>
