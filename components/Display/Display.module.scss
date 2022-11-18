@@ -1,0 +1,15 @@
+.display {
+  background-color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  img {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+}

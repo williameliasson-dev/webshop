@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Button from "../components/Button/Button";
+import Display from "../components/Display/Display";
 
 const Home: NextPage = () => {
   return (
@@ -30,36 +30,11 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className={styles.displays}>
-          <div className={styles.display}>
-            <Image
-              width="200px"
-              height="200px"
-              alt="display-pants"
-              src="/hero-pants.jpg"
-            />
-            <Button>BOTTOMS</Button>
-          </div>
-          <div
-            onMouseOver={() => console.log("MOUSE OVER")}
-            className={styles.display}
-          >
-            <Image
-              width="200px"
-              height="200px"
-              alt="display-pants"
-              src="/hero-top.jpg"
-            />
-            <Button>TOPS</Button>
-          </div>
-          <div className={styles.display}>
-            <Image
-              width="200px"
-              height="200px"
-              alt="display-pants"
-              src="/hero-acc.jpg"
-            />
-            <Button>EYEWEAR</Button>
-          </div>
+          <Display
+            btnTitle="BOTTOMS"
+            img="/hero-pants.jpg"
+            hvrImg="/hero-acc.jpg"
+          />
         </div>
       </div>
       <div className={styles.cover}></div>
