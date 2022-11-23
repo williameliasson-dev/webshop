@@ -1,10 +1,7 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-
 import client from "../utils/prismadb";
 import styles from "../styles/Nyheter.module.scss";
-import Button from "../components/Button";
+import { Product } from "../interface";
 import ProductDisplay from "../components/ProductDisplay";
 
 type Props = {

@@ -1,5 +1,5 @@
 import { Product } from "@prisma/client";
-import Image from "next/image";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { useRouter } from "next/router";
@@ -10,6 +10,21 @@ const SearchBar = ({ setSearching }: any) => {
   const router = useRouter();
 
   useEffect(() => {
+    async function fetchResult() {
+      await fetch("/api/product/search", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({ query: query }),
+      }).then(async (res) => {
+        const data = await res.json();
+        if ((await data) !== results) {
+          setResults(data);
+        }
+      });
+    }
     if (query.length !== 0) {
       setSearching(true);
       fetchResult();
@@ -18,22 +33,6 @@ const SearchBar = ({ setSearching }: any) => {
       setResults([]);
     }
   }, [query]);
-
-  async function fetchResult() {
-    await fetch("/api/product/search", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({ query: query }),
-    }).then(async (res) => {
-      const data = await res.json();
-      if ((await data) !== results) {
-        setResults(data);
-      }
-    });
-  }
 
   return (
     <div className={styles.container}>
@@ -59,9 +58,11 @@ const SearchBar = ({ setSearching }: any) => {
             <div>
               {results?.map((result: Product, i) => {
                 return (
-                  <div key={i}>
-                    <h3>{result.title}</h3>
-                  </div>
+                  <Link href={`/products/${result.id}`} key={i}>
+                    <div>
+                      <h3>{result.title}</h3>
+                    </div>
+                  </Link>
                 );
               })}
             </div>
