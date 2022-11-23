@@ -18,24 +18,4 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  .product {
-    border-radius: 5px;
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    flex-direction: column;
-    align-items: center;
-    color: black;
-    flex: 0.25;
-    .imagewrapper {
-      margin: 10px 20px;
-      position: relative;
-      width: 240px;
-      height: 279px;
-    }
-    h2 {
-      font-weight: 400;
-      color: gray;
-    }
-  }
 }

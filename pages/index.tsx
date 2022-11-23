@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.scss";
-import Button from "../components/Button/Button";
-import Display from "../components/Display/Display";
+import Button from "../components/Button";
+import Display from "../components/Display";
 
 const Home: NextPage = () => {
   return (
@@ -31,9 +31,22 @@ const Home: NextPage = () => {
         </div>
         <div className={styles.displays}>
           <Display
+            link="/"
             btnTitle="BOTTOMS"
             img="/hero-pants.jpg"
-            hvrImg="/hero-acc.jpg"
+            hvrImg="/hero-pants-hvr.jpg"
+          />
+          <Display
+            link="/"
+            btnTitle="TOPS"
+            img="/hero-top.jpg"
+            hvrImg="/hero-top-hvr.jpg"
+          />
+          <Display
+            link="/"
+            btnTitle="EYEWEAR"
+            img="/hero-acc.jpg"
+            hvrImg="/hero-acc-hvr.jpg"
           />
         </div>
       </div>
