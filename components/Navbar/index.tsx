@@ -20,6 +20,9 @@ const Navbar = (props: Props) => {
   const navref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (cart.products.length === 0) {
+      setToggleCart(false);
+    }
     if (toggleMenu && navref.current) {
       navref.current.style.borderBottomColor = "gray";
       if (toggleMenu === true && toggleCart === true) {
@@ -30,7 +33,7 @@ const Navbar = (props: Props) => {
         ? (navref.current.style.borderBottomColor = "black")
         : null;
     }
-  }, [toggleMenu]);
+  }, [toggleMenu, cart.products]);
   useEffect(() => {
     if (toggleMenu === true && toggleCart === true) {
       setToggleMenu(false);
@@ -136,7 +139,7 @@ const Navbar = (props: Props) => {
       {toggleMenu && (
         <div className={styles.dropdown}>
           <div className={styles.searchbar}>
-            <SearchBar setSearching={setSearching} />
+            <SearchBar setSearching={setSearching} setMenu={setToggleMenu} />
           </div>
           {searching === false && (
             <div className={styles.links}>

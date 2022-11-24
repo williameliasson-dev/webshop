@@ -17,8 +17,8 @@ const Home: NextPage = () => {
         <div className={styles.hero}>
           <h1>WEBSHOP</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis,
-            optio!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+            molestias.
           </p>
           <div>
             <Link href={"/news"}>

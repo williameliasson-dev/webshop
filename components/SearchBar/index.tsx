@@ -4,7 +4,15 @@ import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { useRouter } from "next/router";
 
-const SearchBar = ({ setSearching }: any) => {
+interface SearchBarProps {
+  setSearching: React.Dispatch<React.SetStateAction<boolean>>;
+  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({
+  setSearching,
+  setMenu,
+}: any) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Array<Product>>([]);
   const router = useRouter();
@@ -42,6 +50,7 @@ const SearchBar = ({ setSearching }: any) => {
             e.preventDefault();
             router.push(`/search?products=${query}`);
             setQuery("");
+            setMenu(false);
           }}
         >
           <input
@@ -59,7 +68,7 @@ const SearchBar = ({ setSearching }: any) => {
               {results?.map((result: Product, i) => {
                 return (
                   <Link href={`/products/${result.id}`} key={i}>
-                    <div>
+                    <div onClick={() => setMenu(false)}>
                       <h3>{result.title}</h3>
                     </div>
                   </Link>

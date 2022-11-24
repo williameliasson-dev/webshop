@@ -1,0 +1,32 @@
+.product {
+  height: 100vh;
+  width: min(1265px, 100vw);
+  display: flex;
+  align-items: center;
+  margin: auto;
+  .product-content {
+    padding: 0px 30px;
+    h2 {
+      font-size: 3rem;
+      font-weight: 300;
+    }
+    h3 {
+      font-size: 1.7rem;
+      color: var(--gray400);
+      font-weight: 300;
+    }
+    p {
+      padding: 20px 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .product {
+    flex-direction: column;
+    button {
+      width: 100%;
+      padding: 25px;
+    }
+  }
+}
