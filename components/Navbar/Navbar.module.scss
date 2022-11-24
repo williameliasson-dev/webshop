@@ -10,7 +10,6 @@
   display: flex;
   .navbar {
     height: 60px;
-
     z-index: 120;
     display: flex;
     align-items: center;
@@ -104,5 +103,22 @@
   }
   to {
     max-height: 300px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    inset: 0;
+    bottom: auto;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    .navbar {
+      border: none;
+      border-bottom: 1px solid black;
+    }
   }
 }

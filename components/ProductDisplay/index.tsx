@@ -14,7 +14,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ product }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.product}>
-      <Link href={""}>
+      <Link href={`/products/${product.id}`}>
         <a className={styles.imagewrapper}>
           <Image layout="fill" alt="product" src={`${product.imgLink}`} />
         </a>

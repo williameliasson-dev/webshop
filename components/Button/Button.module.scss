@@ -1,5 +1,6 @@
 .btn {
   --bg-color: var(--secondary);
+  --bg-onclick: rgb(52, 52, 52);
   --color: white;
   --bordercolor: none;
   cursor: pointer;
@@ -9,6 +10,9 @@
   padding: 13px 40px;
   font-size: 14px;
   font-weight: 200;
+  &:active {
+    background-color: var(--bg-onclick);
+  }
 }
 
 .invis {
@@ -16,6 +20,7 @@
   --bg-color: transparent;
   --color: black;
   --bordercolor: none;
+  --bg-onclick: transparent;
 
   border: none;
   padding: 0;
