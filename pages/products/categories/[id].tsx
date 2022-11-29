@@ -1,42 +1,54 @@
 import { GetStaticPropsContext } from "next";
 import React from "react";
 import client from "../../../utils/prismadb";
+import ProductDisplay from "../../../components/ProductDisplay";
+import styles from "./Categories.module.scss";
+import { Product } from "../../../interface";
 
-interface ProductsProps {}
+interface ProductsProps {
+  products: Array<Product>;
+}
 
-const Products: React.FC<ProductsProps> = ({}) => {
-  return <div>Products</div>;
+const Products: React.FC<ProductsProps> = ({ products }) => {
+  return (
+    <div className={styles.products}>
+      {products?.map((p, i) => (
+        <div key={i}>
+          <ProductDisplay product={p} />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Products;
 
 export async function getStaticPaths() {
   const prisma = client;
-  const productCategories = await prisma.product.findMany({
+  const catergories = await prisma.category.findMany({
     select: {
-      category: true,
+      name: true,
     },
   });
   return {
-    paths: productCategories.map((c) => {
-      console.log(c.category);
-      return { params: { id: c.category } };
+    paths: catergories.map((c) => {
+      return { params: { id: c.name } };
     }),
-    fallback: false, // can also be true or 'blocking'
+    fallback: false,
   };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const prisma = client;
-  const productId: string | undefined = context.params?.id?.toString();
-  const product = await prisma.product.findUnique({
+  const category: string | undefined = context.params?.id?.toString();
+  const products = await prisma.product.findMany({
     where: {
-      id: productId,
+      category: { name: category },
     },
   });
   return {
     props: {
-      product: JSON.parse(JSON.stringify(product)),
-    }, // will be passed to the page component as props
+      products: JSON.parse(JSON.stringify(products)),
+    },
   };
 }

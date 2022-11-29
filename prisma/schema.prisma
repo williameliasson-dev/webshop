@@ -20,7 +20,8 @@ model Product {
   imgLink    String
   imgHvrLink String
   price      Int
-  category   String   @default("")
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -32,6 +33,14 @@ model Admin {
   email String @unique
 
   @@index([email])
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  products Product[]
+
+  @@index([name])
 }
 
 //webshop ends
