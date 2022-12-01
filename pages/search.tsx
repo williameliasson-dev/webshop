@@ -41,7 +41,7 @@ export async function getServerSideProps({ query }: any) {
       },
     },
     orderBy: {
-      title: "asc",
+      title: "desc",
     },
   });
   return {

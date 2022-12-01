@@ -22,7 +22,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ product }) => {
       <h2>{product.title}</h2>
       <p>{product.price}kr</p>
       <Button variant="btn" onClick={() => dispatch(addProduct(product))}>
-        Köp
+        ADD TO CART
       </Button>
     </div>
   );

@@ -1,12 +1,11 @@
 .products {
   width: 80vw;
-  margin: auto;
+  margin: 80px auto;
   display: grid;
   gap: 2rem;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }

@@ -4,6 +4,7 @@ import client from "../../../utils/prismadb";
 import ProductDisplay from "../../../components/ProductDisplay";
 import styles from "./Categories.module.scss";
 import { Product } from "../../../interface";
+import NotFound from "../../404";
 
 interface ProductsProps {
   products: Array<Product>;
@@ -11,12 +12,18 @@ interface ProductsProps {
 
 const Products: React.FC<ProductsProps> = ({ products }) => {
   return (
-    <div className={styles.products}>
-      {products?.map((p, i) => (
-        <div key={i}>
-          <ProductDisplay product={p} />
+    <div>
+      {products.length > 1 ? (
+        <div className={styles.products}>
+          {products.map((p, i) => (
+            <div key={i}>
+              <ProductDisplay product={p} />
+            </div>
+          ))}
         </div>
-      ))}
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 };

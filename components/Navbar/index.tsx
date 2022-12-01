@@ -144,14 +144,14 @@ const Navbar = (props: Props) => {
           {searching === false && (
             <div className={styles.links}>
               <nav>
-                <Link href={"/news"}>
-                  <a onClick={() => setToggleMenu(false)}>NEW ARRIVALS</a>
+                <Link href={"/products/categories/bottom"}>
+                  <a onClick={() => setToggleMenu(false)}>BOTTOMS</a>
                 </Link>
-                <Link href={"/"}>
-                  <a onClick={() => setToggleMenu(false)}>DENIM</a>
+                <Link href={"/products/categories/top"}>
+                  <a onClick={() => setToggleMenu(false)}>TOPS</a>
                 </Link>
-                <Link href={"/"}>
-                  <a onClick={() => setToggleMenu(false)}>FOOTWEAR</a>
+                <Link href={"/products/categories/eyewear"}>
+                  <a onClick={() => setToggleMenu(false)}>EYEWEAR</a>
                 </Link>
               </nav>
             </div>

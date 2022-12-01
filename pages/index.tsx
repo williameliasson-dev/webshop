@@ -31,19 +31,19 @@ const Home: NextPage = () => {
         </div>
         <div className={styles.displays}>
           <Display
-            link="/"
+            link="/products/categories/bottom"
             btnTitle="BOTTOMS"
             img="/hero-pants.jpg"
             hvrImg="/hero-pants-hvr.jpg"
           />
           <Display
-            link="/"
+            link="/products/categories/top"
             btnTitle="TOPS"
             img="/hero-top.jpg"
             hvrImg="/hero-top-hvr.jpg"
           />
           <Display
-            link="/"
+            link="/products/categories/eyewear"
             btnTitle="EYEWEAR"
             img="/hero-acc.jpg"
             hvrImg="/hero-acc-hvr.jpg"
