@@ -1,9 +1,11 @@
 .product {
   width: min(1265px, 100vw);
   display: flex;
+
   align-items: center;
   margin: auto;
   margin-top: 85px;
+  margin-bottom: 10px;
   .product-content {
     padding: 0px 30px;
     h2 {
@@ -23,7 +25,14 @@
 
 @media screen and (max-width: 992px) {
   .product {
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    .product-content {
+      h2 {
+        font-size: 2rem;
+        font-weight: 300;
+      }
+    }
     button {
       width: 100%;
       padding: 25px;

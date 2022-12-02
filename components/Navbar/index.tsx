@@ -175,7 +175,6 @@ const Navbar = (props: Props) => {
                       <p>{p.title}</p>
                       {p.amount > 1 && <p>Quantity: {p.amount}</p>}
                     </span>
-
                     <span>
                       <p>Price: {p.price}kr</p>
                       {p.amount > 1 && <p>Total: {p.price * p.amount}kr</p>}
