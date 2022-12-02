@@ -42,3 +42,23 @@
   display: flex;
   gap: 40px;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: auto;
+    width: auto;
+    margin-top: 80px;
+    text-align: center;
+    .hero {
+      button {
+        padding: 22px 10px;
+      }
+    }
+  }
+
+  .displays {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
