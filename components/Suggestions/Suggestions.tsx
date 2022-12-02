@@ -11,11 +11,14 @@ interface SuggestionsProps {
 const Suggestions: React.FC<SuggestionsProps> = ({ products }) => {
   return (
     <div className={styles.suggestions}>
-      {products?.map((p, i) => (
-        <div key={i}>
-          <ProductDisplay product={p} />
-        </div>
-      ))}
+      <h2>YOU MAY ALSO LIKE</h2>
+      <div className={styles.products}>
+        {products?.map((p, i) => (
+          <div key={i}>
+            <ProductDisplay product={p} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

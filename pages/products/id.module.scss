@@ -1,9 +1,9 @@
 .product {
-  height: 100vh;
   width: min(1265px, 100vw);
   display: flex;
   align-items: center;
   margin: auto;
+  margin-top: 85px;
   .product-content {
     padding: 0px 30px;
     h2 {

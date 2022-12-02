@@ -41,6 +41,9 @@
 .displays {
   display: flex;
   gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -54,11 +57,5 @@
         padding: 22px 10px;
       }
     }
-  }
-
-  .displays {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
   }
 }
