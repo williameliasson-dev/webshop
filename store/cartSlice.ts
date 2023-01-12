@@ -19,7 +19,7 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action: PayloadAction<Product>) => {
       let cur = current(state);
-      console.log(cur.products);
+
       const product = cur.products.find((p) => action.payload.id === p.id);
       if (!product) {
         state.products = [...cur.products, { ...action.payload, amount: 1 }];

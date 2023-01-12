@@ -18,7 +18,6 @@ model Product {
   title      String
   desc       String
   imgLink    String
-  imgHvrLink String
   price      Int
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String

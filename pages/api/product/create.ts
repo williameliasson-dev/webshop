@@ -20,6 +20,7 @@ export default async function handler(
         desc: req.body.desc,
         imgLink: req.body.imgLink,
         price: req.body.price,
+        category: req.body.category,
       },
     });
     return res.status(200).json(newProduct);
