@@ -13,7 +13,7 @@ interface ProductsProps {
 const Products: React.FC<ProductsProps> = ({ products }) => {
   return (
     <div>
-      {products.length > 1 ? (
+      {products.length >= 1 ? (
         <div className={styles.products}>
           {products.map((p, i) => (
             <div key={i}>
@@ -57,5 +57,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     props: {
       products: JSON.parse(JSON.stringify(products)),
     },
+    revalidate: 100,
   };
 }

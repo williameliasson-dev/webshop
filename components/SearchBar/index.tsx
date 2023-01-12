@@ -65,6 +65,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
           <div className={styles.results}>
             <h2>Suggestions</h2>
             <div>
+              {results.length === 0 && (
+                <div>
+                  <h3>Loading...</h3>
+                </div>
+              )}
               {results?.map((result: Product, i) => {
                 return (
                   <Link href={`/products/${result.id}`} key={i}>

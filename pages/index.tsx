@@ -33,20 +33,20 @@ const Home: NextPage = () => {
           <Display
             link="/products/categories/bottom"
             btnTitle="BOTTOMS"
-            img="/hero-pants.jpg"
-            hvrImg="/hero-pants-hvr.jpg"
+            img="/hero-pants.webp"
+            hvrImg="/hero-pants-hvr.webp"
           />
           <Display
             link="/products/categories/top"
             btnTitle="TOPS"
-            img="/hero-top.jpg"
-            hvrImg="/hero-top-hvr.jpg"
+            img="/hero-top.webp"
+            hvrImg="/hero-top-hvr.webp"
           />
           <Display
             link="/products/categories/eyewear"
             btnTitle="EYEWEAR"
-            img="/hero-acc.jpg"
-            hvrImg="/hero-acc-hvr.jpg"
+            img="/hero-acc.webp"
+            hvrImg="/hero-acc-hvr.webp"
           />
         </div>
       </div>

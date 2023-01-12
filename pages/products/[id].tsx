@@ -81,5 +81,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       product: JSON.parse(JSON.stringify(product)),
       products: JSON.parse(JSON.stringify(products)),
     }, // will be passed to the page component as props
+    revalidate: 100,
   };
 }
