@@ -8,19 +8,19 @@ const Checkout: React.FC = ({}) => {
   const cart = useAppSelector((state) => state.cart);
 
   useEffect(() => {
+    async function fetchHtml() {
+      const products = cart.products.map((p) => {
+        return { id: p.id, amount: p.amount };
+      });
+
+      const htmlSnippet = await axios.post("/api/klarna/createOrder", {
+        products,
+      });
+      setCoHtml(await htmlSnippet.data);
+    }
     fetchHtml();
   }, []);
 
-  async function fetchHtml() {
-    const products = cart.products.map((p) => {
-      return { id: p.id, amount: p.amount };
-    });
-    console.log(products);
-    const htmlSnippet = await axios.post("/api/klarna/createOrder", {
-      products,
-    });
-    setCoHtml(await htmlSnippet.data);
-  }
   return (
     <div className={styles.klarna}>
       {coHtml !== "" && (
