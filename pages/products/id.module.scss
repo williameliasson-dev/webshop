@@ -1,7 +1,6 @@
 .product {
   width: min(1265px, 100vw);
   display: flex;
-
   align-items: center;
   margin: auto;
   margin-top: 85px;
@@ -25,6 +24,7 @@
 
 @media screen and (max-width: 992px) {
   .product {
+    margin-top: 0px;
     flex-wrap: wrap;
     justify-content: center;
     .product-content {

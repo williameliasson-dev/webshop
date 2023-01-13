@@ -53,8 +53,11 @@
     margin-top: 80px;
     text-align: center;
     .hero {
+      button:last-child {
+        display: none;
+      }
       button {
-        padding: 22px 10px;
+        padding: 22px 30px;
       }
     }
   }
