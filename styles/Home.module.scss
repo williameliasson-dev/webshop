@@ -1,6 +1,7 @@
 .cover {
   position: fixed;
   inset: 0;
+  top: 0;
   width: 100vw;
   height: 100vh;
   background: url("../public/home-bg.webp") no-repeat fixed center;
@@ -43,7 +44,6 @@
   gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -59,6 +59,13 @@
       button {
         padding: 22px 30px;
       }
+    }
+  }
+
+  .displays {
+    div {
+      width: 180px;
+      margin: 10px 10px;
     }
   }
 }
